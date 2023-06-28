@@ -471,7 +471,7 @@ jpeg('figs/hc_complete_IEA514_Group_1.jpeg', res = 300, units = 'cm', height = 8
 par(mar = c(2,2,2,2))
 hc <- hclust(dist(df0_temp), 
              method = 'complete')
-plot(hc, labels = df0$Sample, main = 'Complete', hang = -1, cex = 0.25)
+plot(hc, labels = df0$Sample, main = 'Complete', hang = -1, cex = 0.2)
 dev.off()
 
 
@@ -481,7 +481,7 @@ jpeg('figs/hc_average_IEA514_Group_1.jpeg', res = 300, units = 'cm', height = 8,
 par(mar = c(2,2,2,2))
 hc <- hclust(dist(df0_temp), 
              method = 'average')
-plot(hc, labels = df0$Sample, main = 'Average', hang = -1, cex = 0.25)
+plot(hc, labels = df0$Sample, main = 'Average', hang = -1, cex = 0.2)
 dev.off()
 
 

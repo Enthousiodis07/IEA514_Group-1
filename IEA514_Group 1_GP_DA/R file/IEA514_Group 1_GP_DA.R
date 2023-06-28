@@ -9,18 +9,18 @@
 
 # Import the data
 library(readxl)
-df <- read_excel("data/IEA514_Group 1.xlsx")
-View(df)
+df0 <- read_excel("data/IEA514_Group 1.xlsx")
+View(df0)
 
 # Looking at the data
-head(df)
-dim(df)
-summary(df)
+head(df0)
+dim(df0)
+summary(df0)
 
 # Column adjustment
-df$new <- c(rep('Japan',30), rep('Pakistan', 16), rep('Thai', 16), 
+df0$new <- c(rep('Japan',30), rep('Pakistan', 16), rep('Thai', 16), 
             rep ('Group 1', 2)) # add new column
-df <- df[,c(1, 16, 2:15)]
+df <- df0[,c(1, 16, 2:15)]
 colnames(df)[2] ="Sample" # rename new column
 df <- df[, -1] # delete first column
 View(df)
@@ -453,14 +453,14 @@ summary(result_U)
 
 #### Cluster analysis ####
 # Prepare the data for cluster analysis
-df_temp <- df[,-1] # Remove the first column to discard the non-numeric column
-df_temp <- data.matrix(df_temp) # Change to matrix format for heatmap analysis
-row.names(df_temp) <- paste0(as.character(df[,1]), 1:nrow(df)) # Add the locations to the plot
+df0_temp <- df0[,-1] # Remove the first column to discard the non-numeric column
+df0_temp <- data.matrix(df0_temp) # Change to matrix format for heatmap analysis
+row.names(df0_temp) <- paste0(as.character(df0[,1]), 1:nrow(df0)) # Add the locations to the plot
 
 jpeg('figs/heatmap_IEA514_Group_1.jpeg', res = 300, units = 'cm', height = 16, width = 16)
 # The margins of the plot: bottom, left, top, right
 par(mar = c(2,2,2,2))
-heatmap(df_temp)
+heatmap(df0_temp)
 dev.off()
 
 
@@ -469,9 +469,9 @@ dev.off()
 jpeg('figs/hc_complete_IEA514_Group_1.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 # The margins of the plot: bottom, left, top, right
 par(mar = c(2,2,2,2))
-hc <- hclust(dist(df_temp), 
+hc <- hclust(dist(df0_temp), 
              method = 'complete')
-plot(hc, labels = df$Sample, main = 'Complete', hang = -1, cex = 0.3)
+plot(hc, labels = df0$Sample, main = 'Complete', hang = -1, cex = 0.25)
 dev.off()
 
 
@@ -479,13 +479,13 @@ dev.off()
 jpeg('figs/hc_average_IEA514_Group_1.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 # The margins of the plot: bottom, left, top, right
 par(mar = c(2,2,2,2))
-hc <- hclust(dist(df_temp), 
+hc <- hclust(dist(df0_temp), 
              method = 'average')
-plot(hc, labels = df$Sample, main = 'Average', hang = -1, cex = 0.3)
+plot(hc, labels = df0$Sample, main = 'Average', hang = -1, cex = 0.25)
 dev.off()
 
 
-plot(hc, labels = df$Sample, cex = 0.5)
+plot(hc, labels = df0$Sample, cex = 0.5)
 
 #Optional: K-means clustering
 #k_means <- kmeans(df_temp, 3, nstart = 20)

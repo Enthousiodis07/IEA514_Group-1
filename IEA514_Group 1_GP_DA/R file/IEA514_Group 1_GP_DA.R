@@ -7,9 +7,12 @@
 
 #### Preparation ####
 
+# Firstly, the downloaded dataset with .xlsx extension from eLearning@USM must be converted to .csv extension.
+# How to do the conversion? In your .xlsx file, click 'File' tab -> Save As -> CSV (Comma delimited) (*.csv) 
+
+
 # Import the data
-library(readxl)
-df0 <- read_excel("data/IEA514_Group 1.xlsx")
+df0 <- read.csv("data/IEA514_Group 1.csv")
 View(df0)
 
 # Looking at the data
@@ -22,7 +25,7 @@ df0$new <- c(rep('Japan',30), rep('Pakistan', 16), rep('Thai', 16),
             rep ('Group 1', 2)) # add new column
 df <- df0[,c(1, 16, 2:15)]
 colnames(df)[2] ="Sample" # rename new column
-df <- df[, -1] # delete first column
+df <- df[,-1] # delete first column
 View(df)
 
 
@@ -46,22 +49,22 @@ df$Sample <- factor(df$Sample, levels = c('Japan', 'Pakistan', 'Thai', 'Group 1'
 # Bar plot
 jpeg('figs/barplot_Na.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Na_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Na_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Na [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Na.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Na_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Na_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4) # no need ylab as it is redundant
 dev.off()
 
 
@@ -70,22 +73,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Mg.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Mg_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Mg_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Mg [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Mg.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Mg_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Mg_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -94,22 +97,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_P.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$P_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$P_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'P [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_P.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$P_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$P_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -118,22 +121,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_K.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$K_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$K_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'K [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_K.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$K_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$K_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -142,22 +145,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Ca.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Ca_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Ca_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Ca [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Ca.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Ca_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Ca_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -166,22 +169,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Fe.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Fe_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Fe_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Fe [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Fe.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Fe_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Fe_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -190,22 +193,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Co.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Co_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Co_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Co [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Co.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Co_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Co_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -214,22 +217,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Cu.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Cu_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Cu_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Cu [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
 # Boxplots
 jpeg('figs/boxplot_Cu.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Cu_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Cu_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -238,22 +241,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Zn.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Zn_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Zn_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Zn [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Zn.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Zn_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Zn_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -262,22 +265,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Rb.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Rb_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Rb_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Rb [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Rb.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Rb_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Rb_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -286,22 +289,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Sr.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Sr_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Sr_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Sr [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Sr.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Sr_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Sr_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -310,22 +313,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Ba.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Ba_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Ba_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Ba [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Ba.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Ba_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Ba_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -335,22 +338,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_Pb.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$Ba_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$Ba_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'Pb [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('bottomleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_Pb.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$Pb_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$Pb_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -359,22 +362,22 @@ dev.off()
 # Bar plot
 jpeg('figs/barplot_U.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,4,1,0.5))
-barplot(df$U_mg.kg, xaxt = 'n', cex.axis = 0.3, 
+barplot(df$U_mg.kg, xaxt = 'n', cex.axis = 0.4, 
         xlab = 'Location', 
         ylab = 'U [mg/kg]',
         col = as.factor(df$Sample),
         width = c(0.84, 0.84, 0.84, 0.84))
-axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.3)
+axis(1, at = 1:nrow(df), labels = samples, las = 2, cex.axis = 0.4)
 legend('topleft', c('Japan','Pakistan','Thai','Group 1'), 
        pch = c(15,15,15,15),
-       col = c('black','red','green','blue'), cex = 0.3)
+       col = c('black','red','green','blue'), cex = 0.4)
 dev.off()
 
 
-# Boxplots
+# Box plot
 jpeg('figs/boxplot_U.jpeg', res = 300, units = 'cm', height = 8, width = 8)
 par(mar = c(4,2,1,0.5)) 
-plot(df$Sample, df$U_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.3)
+plot(df$Sample, df$U_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
@@ -452,6 +455,12 @@ summary(result_U)
 
 
 #### Cluster analysis ####
+
+# Modify the df0 back into its original state
+df0 <- df0[,-16]
+df0$Sample <- as.factor(df0$Sample) # Sample column as factor instead of character
+View(df0)
+
 # Prepare the data for cluster analysis
 df0_temp <- df0[,-1] # Remove the first column to discard the non-numeric column
 df0_temp <- data.matrix(df0_temp) # Change to matrix format for heatmap analysis

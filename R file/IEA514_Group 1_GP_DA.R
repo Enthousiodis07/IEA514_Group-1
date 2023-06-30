@@ -497,9 +497,9 @@ dev.off()
 plot(hc, labels = df0$Sample, cex = 0.5)
 
 #Optional: K-means clustering
-#k_means <- kmeans(df_temp, 3, nstart = 20)
+#k_means <- kmeans(df0_temp, 3, nstart = 20)
 #k_means
-#table(k_means$cluster, df$Sample)
+#table(k_means$cluster, df0$Sample)
 
 #### PCA ####
 #install.packages('car') # Only one time install

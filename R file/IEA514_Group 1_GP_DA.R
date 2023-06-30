@@ -24,7 +24,7 @@ summary(df0)
 df0$new <- c(rep('Japan',30), rep('Pakistan', 16), rep('Thai', 16), 
             rep ('Group 1', 2)) # add new column
 df <- df0[,c(1, 16, 2:15)]
-colnames(df)[2] ="Sample" # rename new column
+colnames(df)[2] = "Sample" # rename new column
 df <- df[,-1] # delete first column
 View(df)
 

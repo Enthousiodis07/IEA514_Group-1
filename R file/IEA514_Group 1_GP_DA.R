@@ -6,7 +6,6 @@
 #########################
 
 #### Preparation ####
-
 # Firstly, the downloaded dataset with .xlsx extension from eLearning@USM must be converted to .csv extension.
 # How to do the conversion? In your .xlsx file, click 'File' tab -> Save As -> CSV (Comma delimited) (*.csv) 
 
@@ -31,7 +30,6 @@ View(df)
 
 
 #### Exploratory plots ####
-
 # Names for the x labels
 samples <- c(rep('Japan',30), rep('Pakistan', 16), rep('Thai', 16), 
              rep ('Group 1', 2))
@@ -381,7 +379,7 @@ plot(df$Sample, df$U_mg.kg, xlab = 'Location', ylab = '', cex.axis = 0.4)
 dev.off()
 
 
-
+#### ANOVA ####
 #### ANOVA for Na ####
 df_aov_Na <- df[,c(1,2)]
 result_Na <- aov(Na_mg.kg ~ Sample, data = df_aov_Na)
@@ -455,7 +453,6 @@ summary(result_U)
 
 
 #### Cluster analysis ####
-
 # Modify the df0 back into its original state
 df0 <- df0[,-16]
 df0$Sample <- as.factor(df0$Sample) # Sample column as factor instead of character

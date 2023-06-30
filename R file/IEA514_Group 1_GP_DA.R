@@ -455,7 +455,6 @@ summary(result_U)
 #### Cluster analysis ####
 # Modify the df0 back into its original state
 df0 <- df0[,-16]
-df0$Sample <- as.factor(df0$Sample) # Sample column as factor instead of character
 View(df0)
 
 # Prepare the data for cluster analysis

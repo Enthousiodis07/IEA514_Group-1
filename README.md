@@ -1,4 +1,4 @@
-# Data Analysis R Scripts for the Environmental Forensics Class: Group 1 Data Analysis on Multi-Element Profiling of Rice Samples From Different Geographical Origins
+# Data Analysis R Scripts for IEA514 2022/2023 Group 1 Data Analysis on Multi-Element Profiling of Rice Samples From Different Geographical Origins
 The script and folder structure are for the data analysis of Group 1 chemistry lab report assignment of the Applied Environmental Forensics class (IEA514) of the Environmental Technology and Environmental Science programs. These programs are under the Environmental Technology Division of the School of Industrial Technology, Universiti Sains Malaysia.
 
 ## Objective
